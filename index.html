@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadhin | Digital Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #161616;
+            --border-color: #262626;
+            --accent-orange: #f59e0b;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(13, 13, 13, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: bold;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 1.5rem 2rem 1.5rem;
+        }
+
+        /* Terminal Box */
+        .terminal-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .terminal-line {
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .terminal-line span {
+            color: var(--text-main);
+        }
+
+        /* Section Headings & Content */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: var(--accent-orange);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-mono);
+            background-color: transparent;
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-orange);
+            color: var(--bg-color);
+        }
+
+        .section-command {
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        /* Toolkit / Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .skill-title {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects Section */
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .project-list {
+            list-style: disc;
+            margin-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            margin-top: 4rem;
+        }
+
+
+        /* Featured Project */
+        .featured-project {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #141414 0%, #0b0b0b 100%);
+            border: 1px solid rgba(245, 158, 11, 0.42);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+        }
+
+        .featured-project::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 3px;
+            background: var(--accent-orange);
+            box-shadow: 0 0 18px rgba(245, 158, 11, 0.45);
+        }
+
+        .project-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-kicker, .project-status {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .project-kicker { color: var(--accent-orange); }
+        .project-status { color: #86efac; }
+
+        .project-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.95fr);
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .featured-project .project-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+        }
+
+        .project-summary {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin: 0.9rem 0 1rem;
+        }
+
+        .project-subheading {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            margin: 1.1rem 0 0.6rem;
+        }
+
+        .concept-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .concept-list li, .tech-tag {
+            border: 1px solid #3a3020;
+            background: rgba(245, 158, 11, 0.07);
+            color: #fbbf24;
+            border-radius: 4px;
+            padding: 0.35rem 0.6rem;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.65rem;
+        }
+
+        .console-window {
+            min-width: 0;
+            background: #030604;
+            border: 1px solid #29432f;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 28px rgba(34, 197, 94, 0.08);
+            font-family: var(--font-mono);
+        }
+
+        .console-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.7rem 0.85rem;
+            background: #101713;
+            border-bottom: 1px solid #26352b;
+            color: #9ca3af;
+            font-size: 0.72rem;
+        }
+
+        .console-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4b5563;
+        }
+
+        .console-label { margin-left: auto; color: #86efac; }
+
+        .console-screen {
+            min-height: 250px;
+            padding: 1rem;
+            color: #86efac;
+            font-size: 0.82rem;
+            line-height: 1.8;
+        }
+
+        .console-welcome { color: #fbbf24; font-weight: bold; }
+        .console-muted { color: #8b9b8e; }
+        .console-choice { color: #d1fae5; }
+        .console-output { color: #fbbf24; min-height: 2.2em; margin-top: 0.55rem; }
+        .console-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            margin-left: 3px;
+            vertical-align: -2px;
+            background: #86efac;
+            animation: cursorBlink 1s steps(2, start) infinite;
+        }
+
+        @keyframes cursorBlink { to { visibility: hidden; } }
+
+        .console-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0 1rem 1rem;
+        }
+
+        .console-choice-btn {
+            background: #101713;
+            color: #86efac;
+            border: 1px solid #31513a;
+            border-radius: 4px;
+            padding: 0.45rem 0.65rem;
+            font: 0.75rem var(--font-mono);
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .console-choice-btn:hover, .console-choice-btn:focus-visible {
+            background: #193322;
+            border-color: #86efac;
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .demo-note {
+            color: #8b9b8e;
+            font: 0.7rem var(--font-mono);
+            padding: 0 1rem 1rem;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 1.4rem;
+        }
+
+        .project-actions .btn-primary {
+            background: var(--accent-orange);
+            color: #111;
+            font-weight: 700;
+        }
+
+        .project-actions .btn-primary:hover {
+            background: #fbbf24;
+            color: #111;
+        }
+
+        .project-footnote {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin: 1rem 0 0;
+        }
+
+        @media (max-width: 700px) {
+            .project-layout { grid-template-columns: 1fr; }
+            .featured-project { padding: 1.15rem; }
+            .console-screen { min-height: 220px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .console-cursor { animation: none; }
+            .console-choice-btn { transition: none; }
+        }
+
+
+
+        .console-transcript {
+            display: grid;
+            gap: 0.2rem;
+            margin-top: 0.45rem;
+        }
+
+        .console-transcript .console-choice { overflow-wrap: anywhere; }
+        .console-log-line { color: #a7f3d0; }
+        .console-log-prompt { color: #fbbf24; }
+        .console-screen { max-height: 390px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #31513a #030604; }
+        .console-screen::-webkit-scrollbar { width: 6px; }
+        .console-screen::-webkit-scrollbar-thumb { background: #31513a; border-radius: 8px; }
+
+        /* Motion details for the featured project */
+        @keyframes projectReveal {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes consoleGlow {
+            0%, 100% { box-shadow: 0 0 18px rgba(34, 197, 94, 0.06); }
+            50% { box-shadow: 0 0 30px rgba(34, 197, 94, 0.18); }
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-110%); opacity: 0; }
+            12% { opacity: 0.22; }
+            88% { opacity: 0.12; }
+            100% { transform: translateY(520px); opacity: 0; }
+        }
+
+        @keyframes tagPop {
+            from { opacity: 0; transform: translateY(8px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .featured-project {
+            animation: projectReveal 850ms cubic-bezier(.2,.75,.25,1) both;
+            transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+        }
+
+        .featured-project:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 158, 11, 0.78);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.48), 0 0 24px rgba(245, 158, 11, 0.07);
+        }
+
+        .console-window {
+            position: relative;
+            animation: consoleGlow 4s ease-in-out infinite;
+        }
+
+        .console-window::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 70px;
+            pointer-events: none;
+            background: linear-gradient(to bottom, transparent, rgba(134, 239, 172, 0.13), transparent);
+            animation: scanline 5s linear infinite;
+        }
+
+        .tech-tag {
+            animation: tagPop 500ms ease both;
+        }
+
+        .tech-tag:nth-child(2) { animation-delay: 80ms; }
+        .tech-tag:nth-child(3) { animation-delay: 160ms; }
+        .tech-tag:nth-child(4) { animation-delay: 240ms; }
+        .tech-tag:nth-child(5) { animation-delay: 320ms; }
+
+        .project-actions .btn {
+            transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+        }
+
+        .project-actions .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 22px rgba(245, 158, 11, 0.2);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .featured-project, .console-window, .tech-tag {
+                animation: none !important;
+            }
+            .featured-project, .project-actions .btn, .console-choice-btn {
+                transition: none !important;
+            }
+            .console-window::after { display: none; }
+        }
+
+        /* Responsive */
+        @media(max-width: 600px) {
+            nav ul {
+                gap: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    
+        /* V6: subtle site-wide life and interaction */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -20%;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(245,158,11,.10), transparent 27%),
+                radial-gradient(circle at 88% 62%, rgba(34,197,94,.055), transparent 25%);
+            animation: ambientDrift 18s ease-in-out infinite alternate;
+        }
+        @keyframes ambientDrift {
+            from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+            to { transform: translate3d(1.5%, 1%, 0) scale(1.06); }
+        }
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0;
+            z-index: 1200; background: var(--accent-orange);
+            box-shadow: 0 0 12px rgba(245,158,11,.7);
+        }
+        section.reveal, .skill-card, .project-card {
+            opacity: 0; transform: translateY(22px);
+            transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1),
+                        border-color .25s ease, box-shadow .25s ease;
+        }
+        section.reveal.is-visible, .skill-card.is-visible, .project-card.is-visible {
+            opacity: 1; transform: translateY(0);
+        }
+        .skill-card:hover, .project-card:hover {
+            border-color: rgba(245,158,11,.55);
+            box-shadow: 0 12px 30px rgba(0,0,0,.24), 0 0 18px rgba(245,158,11,.05);
+            transform: translateY(-4px);
+        }
+        nav a { position: relative; padding-bottom: 5px; }
+        nav a::after {
+            content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px;
+            background: var(--accent-orange); transition: width .25s ease;
+        }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a.active { color: var(--accent-orange); }
+        .logo { transition: color .2s ease, text-shadow .2s ease; }
+        .logo:hover { color: var(--accent-orange); text-shadow: 0 0 16px rgba(245,158,11,.35); }
+        .tagline::after {
+            content: ""; display: inline-block; width: 2px; height: 1em;
+            margin-left: 6px; vertical-align: -2px; background: var(--accent-orange);
+            animation: cursorBlink 1s steps(2,start) infinite;
+        }
+        .back-to-top {
+            position: fixed; right: 22px; bottom: 22px; z-index: 900;
+            width: 42px; height: 42px; display: grid; place-items: center;
+            border: 1px solid rgba(245,158,11,.65); border-radius: 50%;
+            background: rgba(18,18,18,.88); color: var(--accent-orange);
+            font: 1.1rem var(--font-mono); text-decoration: none;
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: .25s ease; backdrop-filter: blur(8px);
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--accent-orange); color: #111; }
+        @media (max-width: 600px) {
+            header { padding: .85rem 1rem; }
+            nav ul { gap: .65rem; flex-wrap: wrap; justify-content: flex-end; }
+            nav a { font-size: .72rem; }
+            .back-to-top { right: 14px; bottom: 14px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+            section.reveal, .skill-card, .project-card { opacity: 1; transform: none; }
+        }
+
+    
+        /* V7 — full-portfolio motion layer */
+        #matrix-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: .19;
+        }
+        body { position: relative; isolation: isolate; }
+        header, main, footer { position: relative; z-index: 1; }
+        body::before { z-index: -1; }
+        #home { position: relative; }
+        #home h1 {
+            opacity: 0;
+            animation: heroRise .9s .18s cubic-bezier(.2,.75,.25,1) forwards;
+            text-shadow: 0 0 28px rgba(245,158,11,.10);
+        }
+        #home .tagline {
+            opacity: 0;
+            animation: heroRise .85s .48s cubic-bezier(.2,.75,.25,1) forwards;
+        }
+        #home > p:not(.tagline), #home > .btn {
+            opacity: 0;
+            animation: heroRise .8s .72s ease forwards;
+        }
+        #home .terminal-box {
+            opacity: 0;
+            transform: translateY(18px) scale(.985);
+            animation: terminalArrive .8s ease forwards;
+            border-color: rgba(245,158,11,.32);
+            box-shadow: 0 12px 40px rgba(0,0,0,.42), 0 0 24px rgba(245,158,11,.045);
+        }
+        #home .terminal-header::after {
+            content: " ● LIVE";
+            color: #86efac;
+            font-size: .68em;
+            letter-spacing: 1px;
+            animation: livePulse 2s ease-in-out infinite;
+        }
+        #home .terminal-line {
+            opacity: 0;
+            transform: translateX(-8px);
+            animation: terminalLineIn .5s ease forwards;
+        }
+        #home .terminal-line:nth-child(2) { animation-delay: .35s; }
+        #home .terminal-line:nth-child(3) { animation-delay: .55s; }
+        #home .terminal-line:nth-child(4) { animation-delay: .75s; }
+        #home .terminal-line:nth-child(5) { animation-delay: .95s; }
+        .section-command { transition: transform .25s ease, text-shadow .25s ease; }
+        section:hover > .section-command {
+            transform: translateX(4px);
+            text-shadow: 0 0 12px rgba(245,158,11,.3);
+        }
+        .btn, .console-choice-btn, nav a, .skill-card, .project-card, .terminal-box {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn { position: relative; overflow: hidden; }
+        .btn::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.16) 48%, transparent 70%);
+            transform: translateX(-120%); transition: transform .55s ease;
+        }
+        .btn:hover::after { transform: translateX(120%); }
+        .skill-card, .project-card, .terminal-box {
+            transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1),
+                        border-color .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+        @keyframes heroRise {
+            from { opacity: 0; transform: translateY(22px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes terminalArrive {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes terminalLineIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes livePulse { 50% { opacity: .48; } }
+        @media (max-width: 600px) {
+            #matrix-bg { opacity: .12; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #home h1, #home .tagline, #home > p:not(.tagline), #home > .btn,
+            #home .terminal-box, #home .terminal-line {
+                opacity: 1 !important; transform: none !important; filter: none !important;
+                animation: none !important;
+            }
+            #matrix-bg { display: none; }
+        }
+
+    
+        /* V8 hero: reference-inspired wide terminal + oversized developer name */
+        main { max-width: 1320px; padding: 5.5rem 2rem 2rem; }
+        #home { text-align: center; padding-top: .25rem; }
+        #home .terminal-box {
+            width: min(100%, 830px);
+            margin: 0 auto 3rem;
+            padding: 1.1rem 2.2rem 1.35rem;
+            text-align: left;
+            border: 2px solid var(--accent-orange);
+            border-radius: 13px;
+            background: #050505;
+            box-shadow: 0 0 28px rgba(245,158,11,.08), 0 15px 38px rgba(0,0,0,.45);
+            font-size: clamp(.85rem, 1.3vw, 1.08rem);
+        }
+        #home .terminal-header {
+            text-align: center;
+            color: #111;
+            background: linear-gradient(100deg, #c77b1c, #e5a83b);
+            margin: -1.1rem -2.2rem 1.1rem;
+            padding: .8rem 1rem;
+            border-radius: 10px 10px 0 0;
+        }
+        #home .terminal-line {
+            min-height: 1.45em;
+            color: #e5e7eb;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+        #home .terminal-line span { color: #fff; }
+        #home h1 {
+            font-size: clamp(2.8rem, 7.3vw, 6.2rem);
+            line-height: 1.08;
+            letter-spacing: -.055em;
+            margin: 0 auto 1.5rem;
+            max-width: 1200px;
+        }
+        #home h1 .name-accent { color: var(--accent-orange); }
+        #home .tagline {
+            max-width: 1000px;
+            margin: 0 auto 1.5rem;
+            font-size: clamp(1.05rem, 2vw, 1.65rem);
+            line-height: 1.55;
+            letter-spacing: .025em;
+        }
+        #home > p:not(.tagline) {
+            max-width: 820px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+        }
+        #home > .btn { margin-bottom: 1rem; }
+        .typing-cursor::after {
+            content: " ";
+            display: inline-block;
+            width: .62em;
+            height: 1.05em;
+            margin-left: .18em;
+            vertical-align: -.12em;
+            background: currentColor;
+            animation: cursorBlink .85s steps(2, start) infinite;
+        }
+        #home .terminal-line.typing-cursor::after { background: #f3f4f6; }
+        @media (max-width: 700px) {
+            main { padding: 3.5rem 1rem 2rem; }
+            #home .terminal-box { padding: .9rem 1rem 1rem; margin-bottom: 2.4rem; }
+            #home .terminal-header { margin: -.9rem -1rem .9rem; }
+            #home h1 { letter-spacing: -.04em; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .typing-cursor::after { animation: none; }
+        }
+
+    
+        /* V10: persistent glass navigation */
+        header {
+            position: sticky !important;
+            top: 0;
+            z-index: 1100 !important;
+            background: rgba(8, 8, 8, .76) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(135%);
+            backdrop-filter: blur(16px) saturate(135%);
+            border-bottom: 1px solid rgba(245, 158, 11, .28) !important;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .24);
+            transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+        header:hover {
+            background: rgba(8, 8, 8, .88) !important;
+            border-bottom-color: rgba(245, 158, 11, .48) !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .32), 0 1px 12px rgba(245, 158, 11, .06);
+        }
+        /* Keep anchor targets visible below the sticky header. */
+        main section[id] { scroll-margin-top: 105px; }
+        html { scroll-padding-top: 105px; }
+        @media (max-width: 700px) {
+            header { padding-top: .75rem; padding-bottom: .75rem; }
+            main section[id] { scroll-margin-top: 125px; }
+            html { scroll-padding-top: 125px; }
+        }
+        @supports not ((backdrop-filter: blur(1px))) {
+            header { background: rgba(8, 8, 8, .96) !important; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Header / Navbar -->
+    <header>
+        <a href="#home" class="logo">[SHADHIN.DEV]</a>
+        <nav>
+            <ul>
+                <li><a href="#home">$ home</a></li>
+                <li><a href="#about">$ about</a></li>
+                <li><a href="#skills">$ skills</a></li>
+                <li><a href="#projects">$ projects</a></li>
+                <li><a href="#contact">$ contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- Home Section / Terminal -->
+        <section id="home">
+            <div class="terminal-box">
+                <div class="terminal-header">shadhin@portfolio: ~</div>
+                <div class="terminal-line">> initializing personal portfolio...</div>
+                <div class="terminal-line">> name: <span>Nazmul Huda Shadhin</span></div>
+                <div class="terminal-line">> role: <span>CSE Student & Aspiring Tech Professional</span></div>
+                <div class="terminal-line">> interests: <span>Programming, Research, Technology</span></div>
+                <div class="terminal-line">> status: <span>Learning | Building | Improving</span></div>
+            </div>
+
+            <h1><span>Nazmul Huda</span> <span class="name-accent">Shadhin</span></h1>
+            <p class="tagline">Building Skills. Exploring Technology. Turning Ideas Into Reality.</p>
+            <p>I'm a Computer Science and Engineering student interested in programming, research, digital productivity and technology-driven problem solving. I enjoy building practical projects and continuously developing my skills.</p>
+            <a href="#projects" class="btn">Explore My Projects</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-command">$ about_me.txt</div>
+            <h2>A little about me</h2>
+            <p>Hello! I'm Nazmul Huda Shadhin, a Computer Science and Engineering student at Daffodil International University.</p>
+            <p>I'm developing practical skills in Microsoft Office, data entry, document formatting, and AI-assisted workflows. I enjoy organizing information, preparing clear documents, and learning how technology can make everyday work more efficient.</p>
+            <p>I use AI as an assistant, while checking its output and taking responsibility for the final work. I'm looking for entry-level opportunities where I can contribute, learn from real tasks, and keep improving.</p>
+        </section>
+
+        <!-- Skills / Toolkit Section -->
+        <section id="skills">
+            <div class="section-command">$ toolkit.exe</div>
+            <h2>Skills & tools</h2>
+            <p>My current self-assessed skill levels.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-title">C Programming</div>
+                    <div class="skill-desc">Practical experience · console game project</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Microsoft Word</div>
+                    <div class="skill-desc">Intermediate</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Microsoft Excel</div>
+                    <div class="skill-desc">Basic</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Microsoft PowerPoint</div>
+                    <div class="skill-desc">Basic</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">English typing</div>
+                    <div class="skill-desc">Average</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Email & internet</div>
+                    <div class="skill-desc">Good</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">AI-assisted productivity</div>
+                    <div class="skill-desc">Learning and practicing</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-command">$ projects/</div>
+            <h2>Featured project</h2>
+            <p>A closer look at a project from my C programming journey.</p>
+
+            <article class="featured-project">
+                <div class="project-topline">
+                    <span class="project-kicker">01 / Featured build · C programming</span>
+                    <span class="project-status">● Original project</span>
+                </div>
+
+                <div class="project-layout">
+                    <div class="project-information">
+                        <div class="project-title">C-Quest-Learn-Play</div>
+                        <p class="project-summary">
+                            A console-based educational game developed in C using Code::Blocks.
+                            It helps beginners explore C programming concepts through explanations,
+                            interactive quizzes, and game-style challenges.
+                        </p>
+
+                        <h3 class="project-subheading">What it demonstrates</h3>
+                        <ul class="project-list">
+                            <li>Interactive learning through explanations and quizzes.</li>
+                            <li>Four quiz modes: Classic Quiz, Guess the Output, Bug Hunter, and Fill in the Blank.</li>
+                            <li>Five difficulty levels for each mode.</li>
+                            <li>Programming practice with loops, conditional statements, and arrays.</li>
+                        </ul>
+
+                        <h3 class="project-subheading">Technologies & concepts</h3>
+                        <div class="tech-tags" aria-label="Technologies and concepts used">
+                            <span class="tech-tag">C Programming</span>
+                            <span class="tech-tag">Code::Blocks</span>
+                            <span class="tech-tag">Loops</span>
+                            <span class="tech-tag">Conditionals</span>
+                            <span class="tech-tag">Arrays</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="#project-demo" class="btn btn-primary">Explore Project ↘</a>
+                        </div>
+                        <p class="project-footnote">
+                            Original C project source remains unchanged. The interactive preview is a separate website demo.
+                        </p>
+                    </div>
+
+                    <div class="console-window" id="project-demo" aria-label="Website demo of the project menu">
+                        <div class="console-bar">
+                            <span class="console-dot"></span>
+                            <span class="console-dot"></span>
+                            <span class="console-dot"></span>
+                            <span class="console-label">C-QUEST // WEB DEMO</span>
+                        </div>
+                        <div class="console-screen" aria-live="polite">
+                            <div class="console-welcome" id="console-welcome"></div>
+                            <div class="console-muted" id="console-subtitle"></div>
+                            <div id="console-transcript" class="console-transcript"></div>
+                            <div class="console-output" id="console-output">Choose an option below to explore this website demo.</div>
+                            <span class="console-cursor" aria-hidden="true"></span>
+                        </div>
+                        <div class="console-controls" id="console-controls">
+                            <button class="console-choice-btn" type="button" data-action="start">[ 1 ] Start Learning</button>
+                            <button class="console-choice-btn" type="button" data-action="challenges">[ 2 ] Challenges</button>
+                            <button class="console-choice-btn" type="button" data-action="exit">[ 3 ] Exit</button>
+                        </div>
+                        <div class="demo-note">NOTE: WEBSITE DEMO ONLY — NOT THE ORIGINAL C EXECUTABLE.</div>
+                    </div>
+                </div>
+            </article>
+
+            <h2 style="font-size: 1.4rem; margin-top: 2rem;">More practice samples in progress</h2>
+            <p style="font-size: 0.9rem;">These are planned examples, not completed client work.</p>
+
+            <div class="project-card">
+                <div class="project-meta">PLANNED PRACTICE SAMPLE 01</div>
+                <div class="project-title" style="font-size: 1.1rem;">Excel Data Organization</div>
+                <p style="font-size: 0.9rem; margin-bottom: 0;">A workbook demonstrating structured data entry, sorting, filtering, and basic formulas. Add a completed sample when ready.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-meta">PLANNED PRACTICE SAMPLE 02</div>
+                <div class="project-title" style="font-size: 1.1rem;">Professional Word Report</div>
+                <p style="font-size: 0.9rem; margin-bottom: 0;">A formatted report demonstrating headings, tables, spacing, and consistent page layout. Add a completed sample when ready.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-meta">PLANNED PRACTICE SAMPLE 03</div>
+                <div class="project-title" style="font-size: 1.1rem;">AI-Assisted Task</div>
+                <p style="font-size: 0.9rem; margin-bottom: 0;">A practical task showing AI support, careful review, corrections, and a checked final result. Add a completed sample when ready.</p>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
