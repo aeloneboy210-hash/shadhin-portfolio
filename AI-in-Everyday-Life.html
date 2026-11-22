@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI in Everyday Life | Shadhin's Portfolio</title>
+<style>
+:root{color-scheme:dark;--bg:#0d0d0d;--panel:#161616;--line:#292929;--gold:#f59e0b;--text:#f3f4f6;--muted:#a1a1aa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+header{max-width:1000px;margin:auto;padding:26px 24px;display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+a{color:var(--gold)}.brand{font:700 14px ui-monospace,monospace;color:var(--text);text-decoration:none}
+main{max-width:1000px;margin:38px auto;padding:0 24px}.eyebrow{font:12px ui-monospace,monospace;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+h1{font-size:clamp(2.3rem,7vw,5rem);line-height:1.05;margin:16px 0} .intro{color:var(--muted);max-width:650px}
+.deck{margin:32px 0;background:linear-gradient(145deg,#181818,#101010);border:1px solid var(--line);border-radius:16px;min-height:430px;padding:clamp(24px,6vw,64px);display:flex;flex-direction:column;justify-content:center;box-shadow:0 24px 70px #0007}
+.slide-count{font:12px ui-monospace,monospace;color:var(--gold);letter-spacing:1px}.slide h2{font-size:clamp(1.8rem,4.7vw,3.4rem);line-height:1.12;margin:18px 0}.slide .sub{color:var(--gold);font-weight:600}.slide p,.slide li{color:#d1d5db;font-size:clamp(1rem,2vw,1.15rem)}.slide ul{padding-left:1.25rem}.slide li{margin:.55rem 0}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:24px}.controls button{background:transparent;border:1px solid var(--gold);border-radius:5px;padding:10px 18px;color:var(--gold);font:14px ui-monospace,monospace;cursor:pointer}.controls button:hover{background:var(--gold);color:#111}.progress{height:3px;background:#292929;margin-top:22px}.progress span{display:block;height:100%;width:10%;background:var(--gold);transition:width .2s}.note{color:var(--muted);font-size:.9rem;margin-top:28px}footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font:12px ui-monospace,monospace}
+</style></head>
+<body>
+<header><a class="brand" href="index.html">SHADHIN / PORTFOLIO</a><a href="index.html#projects">← Back to projects</a></header>
+<main>
+<div class="eyebrow">Academic presentation · AI literacy</div>
+<h1>AI in<br>Everyday Life</h1>
+<p class="intro">A field guide to how intelligent tools are changing the way we learn, care, work, and decide. Use the controls to move through this web presentation.</p>
+<section class="deck" aria-live="polite">
+<div id="slide" class="slide"></div>
+<div class="controls"><button id="prev" type="button">← Previous</button><span id="count" class="slide-count">01 / 10</span><button id="next" type="button">Next →</button></div>
+<div class="progress"><span id="bar"></span></div>
+</section>
+<p class="note">Presentation content adapted into a web-view format for this portfolio. Key message: use AI to extend human capability, question its outputs, and keep responsibility with people.</p>
+</main>
+<footer>© 2026 Nazmul Huda Shadhin · Built with curiosity and consistency.</footer>
+<script>
+const slides=[
+{tag:"A FIELD GUIDE TO THE PRESENT",title:"AI in Everyday Life",sub:"How intelligent tools are changing the way we learn, care, work, and decide."},
+{tag:"START WITH THE FAMILIAR",title:"AI is already in the background of ordinary life",sub:"It rarely announces itself. It quietly helps sort, route, translate, and respond.",items:["Navigation — suggests a route from signals about roads and movement.","Spam filters — spot patterns that suggest a message does not belong.","Voice and translation — turn spoken requests and unfamiliar words into useful next steps."]},
+{tag:"THE BASIC MECHANISM",title:"What AI actually does",sub:"Everyday AI follows a loop: reads signals, finds patterns, offers a next move, and leaves the decision to us.",items:["Signals — reads text, images, sound, or behavior.","Patterns — compares those signals with learned patterns.","Prediction — generates a response, recommendation, or forecast.","Human decision — someone checks the result when the stakes rise."],foot:"Example: a voice request becomes a suggested route, then a person accepts, changes, or ignores it."},
+{tag:"CHAPTER 1 · EDUCATION",title:"From one-size-fits-all to more responsive learning",items:["Adaptive practice can adjust difficulty and pacing as a learner works.","Generative tools can help brainstorm, explain, translate, and give feedback.","Teachers remain essential for context, motivation, assessment, and trust."],sub:"The useful question: what should the learner try next?"},
+{tag:"CHAPTER 2 · HEALTHCARE",title:"Helping people see patterns earlier",sub:"Decision support: AI brings useful signals forward; clinicians remain accountable.",items:["Symptoms — signals enter the care pathway.","AI assists — patterns in images, notes, or monitoring are surfaced.","Clinician review — a human checks context and options.","Follow-up — people decide, explain, and adjust care."],foot:"Privacy, bias, explainability, and accountability are part of the care model, not afterthoughts."},
+{tag:"CHAPTER 3 · BUSINESS",title:"Turning information into action",sub:"The value appears when AI changes how work moves, not when a chatbot is added to an old process.",items:["Common uses include customer support, forecasting, marketing, software development, and process automation.","High-value deployments redesign workflows around faster feedback and better decisions.","People still set goals, handle exceptions, and own the outcome."]},
+{tag:"THE EVIDENCE SO FAR",title:"The numbers show momentum, not maturity",sub:"Surveyed organizations · McKinsey State of AI 2025; IBM AI in Action 2024",foot:"Experimentation is widespread. Capturing enterprise-level value is still harder."},
+{tag:"FROM TOOLS TO SYSTEMS",title:"The real shift is from tools to workflows",sub:"AI works best when the process is redesigned around faster feedback, better decisions, and clear human ownership.",foot:"Measure outcomes people can feel: time saved, errors reduced, access improved, trust preserved."},
+{tag:"THE EVERYDAY CHECK",title:"Using AI well means keeping humans in the loop",items:["Ask — what data does the system see, and what might it miss?","Check — review important outputs instead of treating fluent language as proof.","Protect — keep private and sensitive information out of the wrong systems.","Escalate — make the next human and the owner of the outcome easy to find."]},
+{tag:"THE TAKEAWAY",title:"AI literacy is becoming everyday literacy",sub:"Use AI to extend human capability, question its outputs, and keep responsibility where it belongs: with people."}
+];
+let current=0;const slide=document.getElementById("slide"),count=document.getElementById("count"),bar=document.getElementById("bar");
+function render(){const s=slides[current];slide.innerHTML='<div class="slide-count">'+s.tag+'</div><h2>'+s.title+'</h2>'+(s.sub?'<p class="sub">'+s.sub+'</p>':'')+(s.items?'<ul>'+s.items.map(x=>'<li>'+x+'</li>').join('')+'</ul>':'')+(s.foot?'<p>'+s.foot+'</p>':'');count.textContent=String(current+1).padStart(2,"0")+' / '+slides.length;bar.style.width=((current+1)/slides.length*100)+'%';document.getElementById("prev").disabled=current===0;document.getElementById("next").disabled=current===slides.length-1}
+document.getElementById("prev").addEventListener("click",()=>{if(current>0){current--;render()}});
+document.getElementById("next").addEventListener("click",()=>{if(current<slides.length-1){current++;render()}});
+document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"&&current<slides.length-1){current++;render()}if(e.key==="ArrowLeft"&&current>0){current--;render()}});
+render();
+</script>
+</body></html>
