@@ -1,6 +1,8 @@
 # Shadhin's Portfolio
 
-🌐 **[Visit My Live Portfolio](https://aeloneboy210-hash.github.io/shadhin-portfolio/)**
+🌐 **[Visit My GitHub Pages Portfolio](https://aeloneboy210-hash.github.io/shadhin-portfolio/)**
+
+🚀 **[Explore BiLuna on Vercel](https://biluna.vercel.app)** — my healthcare AI project demo.
 
 Welcome to my personal portfolio repository! Explore my projects, skills, and work.
 
